@@ -1,0 +1,14 @@
+version: "3.0"
+services:
+  php:
+    build: './website/'
+    volumes:
+      - ./website/:/var/www/html/
+  apache:
+    build: './apache/'
+    depends_on:
+      - php
+    ports:
+      - "9000:80"
+    volumes:
+      - ./website/:/var/www/html/
